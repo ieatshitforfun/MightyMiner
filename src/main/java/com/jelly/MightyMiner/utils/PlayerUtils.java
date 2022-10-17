@@ -6,11 +6,21 @@ import net.minecraft.entity.Entity;
 import net.minecraft.entity.player.EntityPlayer;
 import net.minecraft.item.ItemStack;
 import net.minecraft.util.BlockPos;
+import net.minecraft.util.MovingObjectPosition;
 import net.minecraft.util.StringUtils;
 
 public class PlayerUtils {
 
     private static final Minecraft mc = Minecraft.getMinecraft();
+
+
+    public static void swingItem() {
+        MovingObjectPosition movingObjectPosition = mc.objectMouseOver;
+        if (movingObjectPosition != null && movingObjectPosition.entityHit == null) {
+            mc.thePlayer.swingItem();
+        }
+
+    }
     public static boolean hasStoppedMoving(){
         return mc.thePlayer.posX - mc.thePlayer.lastTickPosX == 0 &&
                 mc.thePlayer.posY - mc.thePlayer.lastTickPosY == 0 &&
